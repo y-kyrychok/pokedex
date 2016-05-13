@@ -45,11 +45,18 @@
         })
     }
 
-    getNextPokemons(pokemons =>
+    let appendPokemons = pokemons =>
     {
         let template = getTemplate("preview")
         let html = pokemons.map(template).join("")
 
         $("main").insertAdjacentHTML("beforeend", html)
+    }
+
+    getNextPokemons(appendPokemons)
+
+    $(".load-more").addEventListener("click", () =>
+    {
+        getNextPokemons(appendPokemons)
     })
 })()
