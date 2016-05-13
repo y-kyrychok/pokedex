@@ -2,19 +2,21 @@
 {
     "use strict"
 
+    const compose = (...fns) => (...args) =>
+    {
+        for (let fn of fns) fn(...args)
+    }
+
     const $ = selector => document.querySelector(selector)
     const api = "http://pokeapi.co"
 
     let getNextPokemons = (() =>
     {
         let next = "/api/v1/pokemon?limit=12"
-        let call = (value, param) => [ ]
-            .concat(value)
-            .forEach(callback => callback(param))
 
         return state =>
         {
-            call(state.wait)
+            state.wait()
 
             let request = new XMLHttpRequest
                 request.responseType = "json"
@@ -27,7 +29,7 @@
 
                 ;( {next} = meta )
 
-                call(state.done, objects)
+                state.done(objects)
             }
         }
     })()
@@ -71,7 +73,7 @@
     getNextPokemons
     ({
         wait: loader.show,
-        done: [ loader.hide, appendPokemons ]
+        done: compose(loader.hide, appendPokemons)
     })
 
     $(".load-more").addEventListener("click", () =>
@@ -79,7 +81,7 @@
         getNextPokemons
         ({
             wait: loader.show,
-            done: [ loader.hide, appendPokemons ]
+            done: compose(loader.hide, appendPokemons)
         })
     })
 })()
