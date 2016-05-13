@@ -29,4 +29,11 @@
         }
     })()
 
+    let getTemplate = name =>
+    {
+        let {innerHTML} = document.querySelector(`.${name}`)
+
+        return data => innerHTML
+            .replace(/\$\{(\w+)\}/g, (_, key) => data[key] || "")
+    }
 })()
