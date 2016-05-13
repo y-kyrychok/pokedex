@@ -70,18 +70,13 @@
         return { hide, show }
     })()
 
-    getNextPokemons
+    let loadMore = () => getNextPokemons
     ({
         wait: loader.show,
         done: compose(loader.hide, appendPokemons)
     })
 
-    $(".load-more").addEventListener("click", () =>
-    {
-        getNextPokemons
-        ({
-            wait: loader.show,
-            done: compose(loader.hide, appendPokemons)
-        })
-    })
+    loadMore()
+
+    $(".load-more").addEventListener("click", loadMore)
 })()
