@@ -20,23 +20,22 @@
 
             let request = new XMLHttpRequest
                 request.responseType = "json"
-                request.open("GET", `${api}${next}`)
+                request.open("GET", api + next)
                 request.send()
 
             request.onload = () =>
             {
                 let {meta, objects} = request.response
-
-                ;( {next} = meta )
-
                 state.done(objects)
+
+                ;({next} = meta)
             }
         }
     })()
 
     let getTemplate = name =>
     {
-        let {innerHTML} = document.querySelector(`[data-is=${name}]`)
+        let {innerHTML} = $(`[data-is=${name}]`)
 
         return data => innerHTML.replace(/\$\{(\w+)\}/g, (_, key) =>
         {
@@ -63,9 +62,8 @@
     let loader = (() =>
     {
         let $progress = $(".is-loading")
-
-        let hide = () => $progress.hidden = true
-        let show = () => $progress.hidden = false
+          , hide = () => $progress.hidden = true
+          , show = () => $progress.hidden = false
 
         return { hide, show }
     })()
