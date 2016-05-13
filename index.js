@@ -32,7 +32,7 @@
 
     let getTemplate = name =>
     {
-        let {innerHTML} = document.querySelector(`[is=${name}]`)
+        let {innerHTML} = document.querySelector(`[data-is=${name}]`)
 
         return data => innerHTML.replace(/\$\{(\w+)\}/g, (_, key) =>
         {
@@ -42,7 +42,7 @@
 
     getNextPokemons(pokemons =>
     {
-        let template = getTemplate("pokemon-preview")
+        let template = getTemplate("preview")
         let html = pokemons.map(template).join("")
 
         main.insertAdjacentHTML("beforeend", html)
