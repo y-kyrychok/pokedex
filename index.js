@@ -8,9 +8,14 @@
     let getNextPokemons = (() =>
     {
         let next = "/api/v1/pokemon?limit=12"
+        let call = (value, param) => [ ]
+            .concat(value)
+            .forEach(callback => callback(param))
 
-        return callback =>
+        return state =>
         {
+            call(state.wait)
+
             let request = new XMLHttpRequest
                 request.responseType = "json"
                 request.open("GET", `${api}${next}`)
@@ -22,7 +27,7 @@
 
                 ;( {next} = meta )
 
-                callback(objects)
+                call(state.done, objects)
             }
         }
     })()
@@ -53,10 +58,28 @@
         $("main").insertAdjacentHTML("beforeend", html)
     }
 
-    getNextPokemons(appendPokemons)
+    let loader = (() =>
+    {
+        let $progress = $(".is-loading")
+
+        let hide = () => $progress.hidden = true
+        let show = () => $progress.hidden = false
+
+        return { hide, show }
+    })()
+
+    getNextPokemons
+    ({
+        wait: loader.show,
+        done: [ loader.hide, appendPokemons ]
+    })
 
     $(".load-more").addEventListener("click", () =>
     {
-        getNextPokemons(appendPokemons)
+        getNextPokemons
+        ({
+            wait: loader.show,
+            done: [ loader.hide, appendPokemons ]
+        })
     })
 })()
