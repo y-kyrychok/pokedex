@@ -5,5 +5,16 @@
 <link rel=stylesheet href=index.css>
 <script src=index.js defer></script>
 
+<template class=pokemon-type>
+    <li><button class=${name}>${name}</button>
+</template>
+
+<template class=pokemon-preview>
+    <article>
+        <img src=http://pokeapi.co/media/img/${id}.png alt=${name}>
+        <h1>${name}</h1>
+        <ul>@{types as pokemon-type}</ul>
+    </article>
+</template>
 <header>Pokedex</header>
 <main></main>
