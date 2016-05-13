@@ -18,12 +18,9 @@
 
             request.onload = () =>
             {
-                let
-                {
-                    meta: {next},
-                    objects
-                }
-                = request.response
+                let {meta, objects} = request.response
+
+                ;( {next} = meta )
 
                 callback(objects)
             }
