@@ -2,8 +2,8 @@
 {
     "use strict"
 
+    const $ = selector => document.querySelector(selector)
     const api = "http://pokeapi.co"
-    const main = document.querySelector("main")
 
     let getNextPokemons = (() =>
     {
@@ -50,6 +50,6 @@
         let template = getTemplate("preview")
         let html = pokemons.map(template).join("")
 
-        main.insertAdjacentHTML("beforeend", html)
+        $("main").insertAdjacentHTML("beforeend", html)
     })
 })()
