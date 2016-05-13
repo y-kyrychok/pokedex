@@ -5,11 +5,11 @@
 <link rel=stylesheet href=index.css>
 <script src=index.js defer></script>
 
-<template class=pokemon-type>
+<template is=pokemon-type>
     <li><button class=${name}>${name}</button>
 </template>
 
-<template class=pokemon-preview>
+<template is=pokemon-preview>
     <article>
         <img src=${api}/media/img/${national_id}.png alt=${name}>
         <h1>${name}</h1>

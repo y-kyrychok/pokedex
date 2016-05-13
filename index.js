@@ -32,7 +32,7 @@
 
     let getTemplate = name =>
     {
-        let {innerHTML} = document.querySelector(`.${name}`)
+        let {innerHTML} = document.querySelector(`[is=${name}]`)
 
         return data => innerHTML.replace(/\$\{(\w+)\}/g, (_, key) =>
         {
