@@ -3,6 +3,7 @@
     "use strict"
 
     const api = "http://pokeapi.co"
+    const main = document.querySelector("main")
 
     let getNextPokemons = (() =>
     {
@@ -36,4 +37,12 @@
         return data => innerHTML
             .replace(/\$\{(\w+)\}/g, (_, key) => data[key] || "")
     }
+
+    getNextPokemons(pokemons =>
+    {
+        let template = getTemplate("pokemon-preview")
+        let html = pokemons.map(template).join("")
+
+        main.insertAdjacentHTML("beforeend", html)
+    })
 })()
