@@ -82,6 +82,23 @@
 
     $(".load-more").addEventListener("click", loadMore)
 
+    $("body").addEventListener("click", event =>
+    {
+        let $button = event.target.closest(".type-filter")
+        if (!$button) return
+
+        let {type} = $button.dataset
+        let $pokemons = document.querySelectorAll(".pokemon-card")
+
+        for (let $pokemon of $pokemons)
+        {
+            $pokemon.hidden = !$pokemon
+                .querySelector(`[data-type=${type}]`)
+        }
+
+        event.stopImmediatePropagation()
+    })
+
     $("body").addEventListener("click", ({target}) =>
     {
         let $card = target.closest(".pokemon-card")
