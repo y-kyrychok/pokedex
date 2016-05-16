@@ -7,7 +7,7 @@
 
     let getNextPokemons = (() =>
     {
-        let next = "/api/v1/pokemon?limit=12"
+        let next = "/api/v1/pokemon/?limit=12"
 
         return state =>
         {
