@@ -4,6 +4,7 @@
 
     const $ = selector => document.querySelector(selector)
     const api = "http://pokeapi.co"
+    const pokes = { }
 
     let getNextPokemons = (() =>
     {
@@ -19,6 +20,10 @@
             request.onload = () =>
             {
                 let {meta, objects} = request.response
+
+                for (let pokemon of objects)
+                    pokes[pokemon.pkdx_id] = pokemon
+
                 callback(objects)
 
                 ;({next} = meta)
@@ -46,15 +51,10 @@
         })
     }
 
-    const pokes = { }
-
     let loadMore = (() =>
     {
         let appendPokemons = pokemons =>
         {
-            for (let pokemon of pokemons)
-                pokes[pokemon.pkdx_id] = pokemon
-
             let template = getTemplate("preview")
             let html = pokemons.map(template).join("")
 
@@ -71,7 +71,7 @@
                 $progress.hidden = true
             })
         }
-        
+
         let $button = $(".pokedex-load")
             $button.addEventListener("click", getAndAppend)
 
