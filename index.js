@@ -46,8 +46,13 @@
         })
     }
 
+    const pokes = { }
+
     let appendPokemons = pokemons =>
     {
+        for (let pokemon of pokemons)
+            pokes[pokemon.pkdx_id] = pokemon
+
         let template = getTemplate("preview")
         let html = pokemons.map(template).join("")
 
@@ -76,4 +81,17 @@
     loadMore()
 
     $(".load-more").addEventListener("click", loadMore)
+
+    $("body").addEventListener("click", ({target}) =>
+    {
+        let $card = target.closest(".pokemon-card")
+        if (!$card) return
+
+        let {id} = $card.dataset
+        let template = getTemplate("details")
+
+        let $dialog = $(".pokemon-details")
+            $dialog.innerHTML = template(pokes[id])
+            $dialog.show()
+    })
 })()

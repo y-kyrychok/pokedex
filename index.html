@@ -11,15 +11,30 @@
 </template>
 
 <template data-is=preview>
-    <article>
+    <article class=pokemon-card data-id=${pkdx_id}>
         <img src=${api}/media/img/${pkdx_id}.png alt=${name}>
         <h1>${name}</h1>
         <ul>@{types as type}</ul>
     </article>
 </template>
 
+<template data-is=details>
+    <h1>${name}</h1>
+    <table>
+        <tr><td>Attack<td>${attack}
+        <tr><td>Defense<td>${defense}
+        <tr><td>SP Attack<td>${sp_atk}
+        <tr><td>SP Defense<td>${sp_def}
+        <tr><td>HP<td>${hp}
+        <tr><td>Speed<td>${speed}
+        <tr><td>Weight<td>${weight}
+    </table>
+</template>
+
 <header>Pokedex</header>
 <main></main>
+
+<dialog class=pokemon-details></dialog>
 
 <button class=load-more>Load more</button>
 <progress class=is-loading hidden></progress>
