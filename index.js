@@ -2,11 +2,6 @@
 {
     "use strict"
 
-    const compose = (...fns) => (...args) =>
-    {
-        for (let fn of fns) fn(...args)
-    }
-
     const $ = selector => document.querySelector(selector)
     const api = "http://pokeapi.co"
 
@@ -71,7 +66,11 @@
     let loadMore = () => getNextPokemons
     ({
         wait: loader.show,
-        done: compose(loader.hide, appendPokemons)
+        done(pokemons)
+        {
+            loader.hide()
+            appendPokemons(pokemons)
+        }
     })
 
     loadMore()
