@@ -31,14 +31,16 @@
     let getTemplate = name =>
     {
         let {innerHTML} = $(`[data-is=${name}]`)
+          , props = /\$\{\s*(\w+)\s*\}/g
+          , loops = /@\{\s*(\w+)\s+as\s+(\w+)\s*\}/g
 
-        return data => innerHTML.replace(/\$\{(\w+)\}/g, (_, key) =>
+        return data => innerHTML.replace(props, (_, key) =>
         {
             return data[key]
                 || { api }[key]
                 || ""
         })
-        .replace(/@\{(\w+) as (\w+)\}/, (_, key, name) =>
+        .replace(loops, (_, key, name) =>
         {
             return data[key]
                 .map(getTemplate(name))
