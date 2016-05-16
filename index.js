@@ -50,39 +50,41 @@
 
     const pokes = { }
 
-    let appendPokemons = pokemons =>
+    let loadMore = (() =>
     {
-        for (let pokemon of pokemons)
-            pokes[pokemon.pkdx_id] = pokemon
+        let appendPokemons = pokemons =>
+        {
+            for (let pokemon of pokemons)
+                pokes[pokemon.pkdx_id] = pokemon
 
-        let template = getTemplate("preview")
-        let html = pokemons.map(template).join("")
+            let template = getTemplate("preview")
+            let html = pokemons.map(template).join("")
 
-        $("main").insertAdjacentHTML("beforeend", html)
-    }
+            $("main").insertAdjacentHTML("beforeend", html)
+        }
 
-    let loader = (() =>
-    {
-        let $progress = $("progress")
-          , hide = () => $progress.hidden = true
-          , show = () => $progress.hidden = false
+        let getAndAppend = () => getNextPokemons
+        ({
+            wait()
+            {
+                $progress.hidden = false
+            },
+            done(pokemons)
+            {
+                $progress.hidden = true
+                appendPokemons(pokemons)
+            }
+        })
 
-        return { hide, show }
+        let $button = $(".pokedex-load")
+            $button.addEventListener("click", getAndAppend)
+
+        let $progress = $button.querySelector("progress")
+
+        return getAndAppend
     })()
 
-    let loadMore = () => getNextPokemons
-    ({
-        wait: loader.show,
-        done(pokemons)
-        {
-            loader.hide()
-            appendPokemons(pokemons)
-        }
-    })
-
     loadMore()
-
-    $(".pokedex-load").addEventListener("click", loadMore)
 
     $("body").addEventListener("click", event =>
     {
