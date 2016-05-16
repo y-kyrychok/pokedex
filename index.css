@@ -102,69 +102,67 @@ button.load-more
 	/*background: white;*/
 }
 
-.bug
+[data-type=bug]
 {
 	background: brown;
 }
-
-.electric
+[data-type=electric]
 {
 	background: yellow;
 }
-.fairy
+[data-type=fairy]
 {
 	background: #D2B13A;
 }
-
-.fighting
+[data-type=fighting]
 {
 	background: #EC2FDE;
 }
-.flying
+[data-type=flying]
 {
 	background: #C4A6FF;
 }
-.fire
+[data-type=fire]
 {
 	background: red;
 }
-.ghost
+[data-type=ghost]
 {
 	background: #BBBBBB;
 }
-.grass
+[data-type=grass]
 {
 	background: #65F9A7;
 }
-.ground
+[data-type=ground]
 {
 	background: #966B34;
 }
-.ice
+[data-type=ice]
 {
 	background: #C5FFFC;
 }
-.normal
+[data-type=normal]
 {
 	background: white;
 }
-.poison
+[data-type=poison]
 {
 	background: #46C646;
 }
-.psychic
+[data-type=psychic]
 {
 	background: #B4FFBD;
 }
-.rock
+[data-type=rock]
 {
 	background: #FFD0D0;
 }
-.steel
+[data-type=steel]
 {
 	background: #EAFFB9;
 }
-.water
+[data-type=water]
 {
 	background: #B5D3FF;
 }

@@ -7,7 +7,10 @@
 <script src=index.js defer></script>
 
 <template data-is=type>
-    <li><button class=${name}>${name}</button>
+    <li>
+        <button data-type=${name} class=type-filter>
+            ${name}
+        </button>
 </template>
 
 <template data-is=preview>
