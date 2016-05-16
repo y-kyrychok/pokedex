@@ -9,10 +9,8 @@
     {
         let next = "/api/v1/pokemon/?limit=12"
 
-        return state =>
+        return callback =>
         {
-            state.wait()
-
             let request = new XMLHttpRequest
                 request.responseType = "json"
                 request.open("GET", api + next)
@@ -21,7 +19,7 @@
             request.onload = () =>
             {
                 let {meta, objects} = request.response
-                state.done(objects)
+                callback(objects)
 
                 ;({next} = meta)
             }
@@ -63,19 +61,17 @@
             $("main").insertAdjacentHTML("beforeend", html)
         }
 
-        let getAndAppend = () => getNextPokemons
-        ({
-            wait()
-            {
-                $progress.hidden = false
-            },
-            done(pokemons)
-            {
-                $progress.hidden = true
-                appendPokemons(pokemons)
-            }
-        })
+        let getAndAppend = () =>
+        {
+            $progress.hidden = false
 
+            getNextPokemons(pokemons =>
+            {
+                appendPokemons(pokemons)
+                $progress.hidden = true
+            })
+        }
+        
         let $button = $(".pokedex-load")
             $button.addEventListener("click", getAndAppend)
 
