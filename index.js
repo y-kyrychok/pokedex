@@ -30,7 +30,7 @@
 
     let getTemplate = name =>
     {
-        let {innerHTML} = $(`[data-is=${name}]`)
+        let {innerHTML} = $(`[data-for=${name}]`)
           , props = /\$\{\s*(\w+)\s*\}/g
           , loops = /@\{\s*(\w+)\s+as\s+(\w+)\s*\}/g
 
@@ -63,7 +63,7 @@
 
     let loader = (() =>
     {
-        let $progress = $(".is-loading")
+        let $progress = $("progress")
           , hide = () => $progress.hidden = true
           , show = () => $progress.hidden = false
 
@@ -82,15 +82,15 @@
 
     loadMore()
 
-    $(".load-more").addEventListener("click", loadMore)
+    $(".pokedex-load").addEventListener("click", loadMore)
 
     $("body").addEventListener("click", event =>
     {
-        let $button = event.target.closest(".type-filter")
+        let $button = event.target.closest("[is=pokedex-type]")
         if (!$button) return
 
         let {type} = $button.dataset
-        let $pokemons = document.querySelectorAll(".pokemon-card")
+        let $pokemons = document.querySelectorAll("[is=pokemon-card]")
 
         for (let $pokemon of $pokemons)
         {
@@ -103,13 +103,13 @@
 
     $("body").addEventListener("click", ({target}) =>
     {
-        let $card = target.closest(".pokemon-card")
+        let $card = target.closest("[is=pokedex-card]")
         if (!$card) return
 
         let {id} = $card.dataset
         let template = getTemplate("details")
 
-        let $dialog = $(".pokemon-details")
+        let $dialog = $(".pokedex-details")
             $dialog.innerHTML = template(pokes[id])
             $dialog.show()
     })

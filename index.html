@@ -6,22 +6,22 @@
 <link rel=stylesheet href=index.css>
 <script src=index.js defer></script>
 
-<template data-is=type>
+<template data-for=type>
     <li>
-        <button data-type=${name} class=type-filter>
+        <button is=pokedex-type kind=${name}>
             ${name}
         </button>
 </template>
 
-<template data-is=preview>
-    <article class=pokemon-card data-id=${pkdx_id}>
+<template data-for=preview>
+    <article is=pokedex-card number=${pkdx_id}>
         <img src=${api}/media/img/${pkdx_id}.png alt=${name}>
-        <h1>${name}</h1>
+        <h1>${name} #${pkdx_id}</h1>
         <ul>@{types as type}</ul>
     </article>
 </template>
 
-<template data-is=details>
+<template data-for=details>
     <h1>${name}</h1>
     <table>
         <tr><td>Attack<td>${attack}
@@ -37,7 +37,8 @@
 <header>Pokedex</header>
 <main></main>
 
-<dialog class=pokemon-details></dialog>
-
-<button class=load-more>Load more</button>
-<progress class=is-loading hidden></progress>
+<dialog class=pokedex-details></dialog>
+<button class=pokedex-load>
+    Load more
+    <progress hidden></progress>
+</button>
