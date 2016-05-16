@@ -1,0 +1,164 @@
+body
+{
+	width: 1024px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+/*	margin: 0 auto;*/
+}
+
+header 
+{
+	width: 365px;
+	
+	font-family: Arial;
+	font-size: 5.5em;
+	font-weight: 700;
+	color: white;
+	text-shadow: -4px 4px 3px #666, 1px -1px 2px #000;
+
+	margin: 35px 0;
+}
+
+main
+{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+article
+{
+	width: 155px;
+
+	margin: 10px 14px;
+	padding: 10px;
+
+	box-shadow: -4px 4px 3px #666, 1px -1px 2px #000;
+	border-radius: 5px;
+}
+
+article img
+{
+	display: block;
+	margin: 0 auto;
+}
+
+article h1
+{
+	font-family: Courier;
+	font-size: 1.1em;
+	letter-spacing: 0.5px;
+
+	border-bottom: 1px solid red;
+}
+
+article ul
+{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+
+	margin: 10px 0 5px;
+}
+
+article ul li button
+{
+	width: 75px;
+
+	font-family: Arial;
+	font-size: 1.1em;
+	font-weight: 400;
+
+	margin: 0 0 3px 10px;
+	padding: 3px 0;
+	border-radius: 5px;
+}
+
+article ul li button:first-child
+{
+	margin: 0;
+}
+
+button.load-more
+{
+	width: 150px;
+
+	font-size: 1.5em;
+	font-weight: 700;
+	color: white;
+	text-shadow: -4px 4px 3px #666, 1px -1px 2px #000;
+
+	margin: 10px 0;
+	padding: 10px;
+	border-radius: 5px;
+	/*background: white;*/
+}
+
+.bug
+{
+	background: brown;
+}
+
+.electric
+{
+	background: yellow;
+}
+.fairy
+{
+	background: #D2B13A;
+}
+
+.fighting
+{
+	background: #EC2FDE;
+}
+.flying
+{
+	background: #C4A6FF;
+}
+.fire
+{
+	background: red;
+}
+.ghost
+{
+	background: #BBBBBB;
+}
+.grass
+{
+	background: #65F9A7;
+}
+.ground
+{
+	background: #966B34;
+}
+.ice
+{
+	background: #C5FFFC;
+}
+.normal
+{
+	background: white;
+}
+.poison
+{
+	background: #46C646;
+}
+.psychic
+{
+	background: #B4FFBD;
+}
+.rock
+{
+	background: #FFD0D0;
+}
+.steel
+{
+	background: #EAFFB9;
+}
+.water
+{
+	background: #B5D3FF;
+}

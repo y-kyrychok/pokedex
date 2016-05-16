@@ -1,0 +1,18 @@
+html, body, h1, article, figure, figcaption, header, ul, li
+{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+}
+
+html
+{
+	display: flex;
+	justify-content: center;
+}
+
+li
+{
+	list-style-type: none;
+}
