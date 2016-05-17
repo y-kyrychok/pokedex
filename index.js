@@ -87,13 +87,13 @@
         let $button = event.target.closest("[is=pokedex-type]")
         if (!$button) return
 
-        let {type} = $button.dataset
-        let $pokemons = document.querySelectorAll("[is=pokemon-card]")
+        let type = $button.getAttribute("kind")
+        let $pokemons = document.querySelectorAll("[is=pokedex-card]")
 
         for (let $pokemon of $pokemons)
         {
             $pokemon.hidden = !$pokemon
-                .querySelector(`[data-type=${type}]`)
+                .querySelector(`[kind=${type}]`)
         }
 
         event.stopImmediatePropagation()
@@ -104,7 +104,7 @@
         let $card = target.closest("[is=pokedex-card]")
         if (!$card) return
 
-        let {id} = $card.dataset
+        let id = $card.getAttribute("number")
         let template = getTemplate("details")
 
         let $dialog = $(".pokedex-details")
