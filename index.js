@@ -87,16 +87,13 @@
 
     $("body").addEventListener("click", event =>
     {
-    $("body").addEventListener("click", event =>
-    {
-        let $card = event.target.closest("[is=pokedex-card]")
+        let $card = event.target.closest("pokedex-card")
         if (!$card) return
 
-        let id = $card.getAttribute("number")
+        let {number} = $card
         let template = getTemplate("details")
 
-        
-        append($dialog, template(pokes[id]))
+        append($dialog, template(pokes[number]))
         $dialog.showModal(event)
     })
 
