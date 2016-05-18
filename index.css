@@ -114,6 +114,13 @@ dialog.pokedex-details h1
 	border-bottom: 1px solid red;
 }
 
+::backdrop
+{
+	will-change: transform;
+	background: black;
+	opacity: 0.5;
+}
+
 .pokedex-details .close
 {
 	float: right;
