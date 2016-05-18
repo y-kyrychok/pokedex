@@ -101,6 +101,24 @@ button.pokedex-load
 	border-radius: 5px;
 }
 
+dialog.pokedex-details
+{
+	position: fixed;
+	left: 0;
+	top: 174px;
+	right: inherit;
+
+	border: 1px solid black;
+	box-shadow: 4px 4px 15px #666;
+	background: white;
+}
+
+dialog.pokedex-details h1
+{
+	margin-bottom: 5px;
+	border-bottom: 1px solid red;
+}
+
 [kind=bug]
 {
 	background: brown;
