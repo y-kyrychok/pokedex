@@ -16,3 +16,8 @@ li
 {
 	list-style-type: none;
 }
+
+dialog
+{
+	right: unset;
+}

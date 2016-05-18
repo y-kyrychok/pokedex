@@ -99,9 +99,9 @@
         event.stopImmediatePropagation()
     })
 
-    $("body").addEventListener("click", ({target}) =>
+    $("body").addEventListener("click", event =>
     {
-        let $card = target.closest("[is=pokedex-card]")
+        let $card = event.target.closest("[is=pokedex-card]")
         if (!$card) return
 
         let id = $card.getAttribute("number")
@@ -109,6 +109,6 @@
 
         let $dialog = $(".pokedex-details")
             $dialog.innerHTML = template(pokes[id])
-            $dialog.show()
+            $dialog.show(event)
     })
 })()
