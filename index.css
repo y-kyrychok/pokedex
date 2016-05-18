@@ -47,6 +47,7 @@ article
 
 article img
 {
+	height: 120px;
 	display: block;
 	margin: 0 auto;
 }
@@ -54,7 +55,6 @@ article img
 article h1
 {
 	font-family: Courier;
-	font-size: 1.1em;
 	letter-spacing: 0.5px;
 
 	border-bottom: 1px solid red;
@@ -87,9 +87,9 @@ article ul li button:first-child
 	margin: 0;
 }
 
-button.load-more
+button.pokedex-load
 {
-	width: 150px;
+	width: 270px;
 
 	font-size: 1.5em;
 	font-weight: 700;
@@ -99,7 +99,6 @@ button.load-more
 	margin: 10px 0;
 	padding: 10px;
 	border-radius: 5px;
-	/*background: white;*/
 }
 
 [kind=bug]
