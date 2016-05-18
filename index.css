@@ -43,6 +43,8 @@ article
 
 	box-shadow: -4px 4px 3px #666, 1px -1px 2px #000;
 	border-radius: 5px;
+
+	cursor: pointer;
 }
 
 article img
@@ -124,6 +126,7 @@ dialog.pokedex-details h1
 .pokedex-details .close
 {
 	float: right;
+	cursor: pointer;
 }
 
 [kind=bug]
