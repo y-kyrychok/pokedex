@@ -6,25 +6,29 @@
         return
 
     let {prototype} = HTMLDialogElement
-    let {show} = prototype
 
-    prototype.show = function(anchor)
+    for (let key of [ "show", "showModal" ])
     {
-        if (anchor instanceof MouseEvent)
-        {
-            let {pageX, pageY} = anchor
+        let method = prototype[key]
 
-            this.style = `
-                position: absolute;
-                top: ${pageY}px;
-                left: ${pageX}px;
-            `
-        }
-        else if (anchor instanceof Element)
+        prototype[key] = function(anchor)
         {
-            ///
-        }
+            if (anchor instanceof MouseEvent)
+            {
+                let {pageX, pageY} = anchor
 
-        return show.apply(this, arguments)
+                this.style = `
+                    position: absolute;
+                    top: ${pageY}px;
+                    left: ${pageX}px;
+                `
+            }
+            else if (anchor instanceof Element)
+            {
+                ///
+            }
+
+            return method.apply(this, arguments)
+        }
     }
 })()
