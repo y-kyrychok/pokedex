@@ -6,6 +6,9 @@
     const api = "http://pokeapi.co"
     const pokes = { }
 
+    let append = ($element, html) =>
+        $element.insertAdjacentHTML("beforeend", html)
+
     let getNextPokemons = (() =>
     {
         let next = "/api/v1/pokemon/?limit=12"
@@ -58,7 +61,7 @@
             let template = getTemplate("preview")
             let html = pokemons.map(template).join("")
 
-            $("main").insertAdjacentHTML("beforeend", html)
+            append($("main"), html)
         }
 
         let getAndAppend = () =>
@@ -108,7 +111,7 @@
         let template = getTemplate("details")
 
         let $dialog = $(".pokedex-details")
-            $dialog.innerHTML = template(pokes[id])
             $dialog.show(event)
+        append($dialog, template(pokes[id]))
     })
 })()
