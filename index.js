@@ -112,7 +112,7 @@
 
         
         append($dialog, template(pokes[id]))
-        $dialog.show(event)
+        $dialog.showModal(event)
     })
 
     let $dialog = $(".pokedex-details")
