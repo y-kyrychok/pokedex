@@ -114,6 +114,11 @@ dialog.pokedex-details h1
 	border-bottom: 1px solid red;
 }
 
+.pokedex-details .close
+{
+	float: right;
+}
+
 [kind=bug]
 {
 	background: brown;

@@ -110,8 +110,14 @@
         let id = $card.getAttribute("number")
         let template = getTemplate("details")
 
-        let $dialog = $(".pokedex-details")
-            $dialog.show(event)
+        
         append($dialog, template(pokes[id]))
+        $dialog.show(event)
     })
+
+    let $dialog = $(".pokedex-details")
+
+    $dialog
+        .querySelector(".close")
+        .addEventListener("click", () => $dialog.close())
 })()
