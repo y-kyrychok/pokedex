@@ -87,21 +87,6 @@
 
     $("body").addEventListener("click", event =>
     {
-        let $button = event.target.closest("[is=pokedex-type]")
-        if (!$button) return
-
-        let type = $button.getAttribute("kind")
-        let $pokemons = document.querySelectorAll("[is=pokedex-card]")
-
-        for (let $pokemon of $pokemons)
-        {
-            $pokemon.hidden = !$pokemon
-                .querySelector(`[kind=${type}]`)
-        }
-
-        event.stopImmediatePropagation()
-    })
-
     $("body").addEventListener("click", event =>
     {
         let $card = event.target.closest("[is=pokedex-card]")
@@ -116,6 +101,24 @@
     })
 
     let $dialog = $(".pokedex-details")
+
+    let filter = Object.create(null)
+
+    $("body").addEventListener("pokedex-filter", ({detail}) =>
+    {
+        let {type, checked} = detail
+
+        filter[type] = checked
+    
+        let $pokemons = document.querySelectorAll("pokedex-card")
+        let showOnly = Object.keys(filter).filter(key => filter[key])
+
+        for (let $pokemon of $pokemons)
+        {
+            $pokemon.hidden = !showOnly
+                .some(type => $pokemon.hasType(type))
+        }
+    })
 
     $dialog
         .querySelector(".close")
