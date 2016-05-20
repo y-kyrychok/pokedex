@@ -1,37 +1,38 @@
 "use strict"
 
-document.registerElement("pokedex-filter", class extends HTMLElement
+document.registerElement("pokedex-filter", class extends HTMLInputElement
 {
-    get type()
+    static get extends()
     {
-        return this.getAttribute("type")
+        return "input"
+    }
+
+    get kind()
+    {
+        return this.getAttribute("kind")
     }
 
     createdCallback()
     {
-        let {type} = this
+        let {kind} = this
 
-        this.innerHTML = `<label>${type}<input type=checkbox></label>`
-
-        let $input = this.querySelector("input")
-
-        $input.addEventListener("change", ({target}) =>
+        this.addEventListener("change", () =>
         {
-            let {checked} = target
-            let event = new CustomEvent("pokedex-filter",
+            let {checked} = this
+            let event = new CustomEvent("pokedex-show",
             {
                 bubbles: true,
                 cancelable: true,
-                detail: { type, checked }
+                detail: { kind, checked }
             })
 
             this.dispatchEvent(event)
         })
 
-        document.addEventListener("pokedex-filter", ({detail}) =>
+        document.addEventListener("pokedex-show", ({detail}) =>
         {
-            if (type == detail.type)
-                $input.checked = detail.checked
+            if (kind == detail.kind)
+                this.checked = detail.checked
         })
     }
 })

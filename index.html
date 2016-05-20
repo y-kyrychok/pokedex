@@ -12,14 +12,20 @@
 <script src=pokedex-filter.js async></script>
 
 <template data-for=type>
-    <li><pokedex-filter type={name}></pokedex-filter>
+    <li>
+        <label>
+            {name}
+            <input type=checkbox
+                kind={name}
+                is=pokedex-filter>
+        </label>
 </template>
 
 <template data-for=card>
     <pokedex-card number={pkdx_id}>
         <img src={api}/media/img/{pkdx_id}.png alt={name}>
         <h1>{name} #{pkdx_id}</h1>
-        <ul>@{types as type}</ul>
+        <ul class=types>@{types as type}</ul>
     </pokedex-card>
 </template>
 
@@ -40,7 +46,9 @@
 
 <pokedex-main container=section template=card>
     <section></section>
-    <button is=pokedex-load clicked>Load more</button>
+    <button is=pokedex-load clicked>
+        Load more
+    </button>
 </pokedex-main>
 
 <dialog class=pokedex-details>
