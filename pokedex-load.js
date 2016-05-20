@@ -10,9 +10,8 @@ document.registerElement("pokedex-load", class extends HTMLElement
     createdCallback()
     {
         let progress = document.createElement("progress")
-            progress.hidden = true
-
         let done = () => progress.hidden = true
+            done()
 
         this.append(progress)
         this.addEventListener("click", () =>
@@ -28,5 +27,11 @@ document.registerElement("pokedex-load", class extends HTMLElement
 
             this.dispatchEvent(event)
         })
+
+        if (this.hasAttribute("clicked"))
+        {
+            this.click()
+            this.removeAttribute("clicked")
+        }
     }
 })
