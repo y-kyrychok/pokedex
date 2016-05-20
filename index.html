@@ -13,10 +13,10 @@
     <li><pokedex-filter type=${name}></pokedex-filter>
 </template>
 
-<template data-for=preview>
     <pokedex-card number=${pkdx_id}>
         <img src=${api}/media/img/${pkdx_id}.png alt=${name}>
         <h1>${name} #${pkdx_id}</h1>
+<template data-for=card>
         <ul>@{types as type}</ul>
     </pokedex-card>
 </template>
