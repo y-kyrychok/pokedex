@@ -4,7 +4,7 @@ document.registerElement("pokedex-card", class extends HTMLElement
 {
     get number()
     {
-        return this.getAttribute("number")
+        return +this.getAttribute("number")
     }
 
     hasType(type)
