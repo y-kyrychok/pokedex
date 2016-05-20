@@ -18,7 +18,7 @@ document.registerElement("pokedex-load", class extends HTMLElement
         {
             progress.hidden = false
 
-            let event = new CustomEvent("pokedex-load",
+            let event = new CustomEvent("pokedex-next",
             {
                 bubbles: true,
                 cancelable: true,

@@ -46,7 +46,7 @@ document.registerElement("pokedex-main", class extends HTMLElement
 
         this._next = "/api/v1/pokemon/?limit=12"
         this._pokemons = {}
-        this.addEventListener("pokedex-load", ({detail}) =>
+        this.addEventListener("pokedex-next", ({detail}) =>
         {
             this.getNextPokemons(pokemons =>
             {
