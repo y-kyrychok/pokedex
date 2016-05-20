@@ -7,7 +7,7 @@ const append = ($element, html) =>
 const getTemplate = name =>
 {
     let {innerHTML} = document.querySelector(`[data-for=${name}]`)
-      , props = /\$\{\s*(\w+)\s*\}/g
+      , props = /\{\s*(\w+)\s*\}/g
       , loops = /@\{\s*(\w+)\s+as\s+(\w+)\s*\}/g
 
     return data => innerHTML.replace(props, (_, key) =>
@@ -37,8 +37,6 @@ document.registerElement("pokedex-main", class extends HTMLElement
     {
         let name = this.getAttribute("template")
 
-        console.log(name)
-
         return getTemplate(name)
     }
 
@@ -48,21 +46,16 @@ document.registerElement("pokedex-main", class extends HTMLElement
 
         this._next = "/api/v1/pokemon/?limit=12"
         this._pokemons = {}
-        this.addEventListener("pokedex-next", () =>
+        this.addEventListener("pokedex-load", ({detail}) =>
         {
             this.getNextPokemons(pokemons =>
             {
                 let html = pokemons.map(template).join("")
 
                 append(container, html)
+
+                detail.done()
             })
-        })
-
-        this.getNextPokemons(pokemons =>
-        {
-            let html = pokemons.map(template).join("")
-
-            append(container, html)
         })
     }
 

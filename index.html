@@ -7,6 +7,7 @@
 
 <script src=dialog.js async></script>
 <script src=pokedex-main.js async></script>
+<script src=pokedex-load.js async></script>
 <script src=pokedex-card.js async></script>
 <script src=pokedex-filter.js async></script>
 
@@ -39,10 +40,7 @@
 
 <pokedex-main container=section template=card>
     <section></section>
-    <button is=pokedex-load>
-        Load more
-        <progress hidden></progress>
-    </button>
+    <button is=pokedex-load>Load more</button>
 </pokedex-main>
 
 <dialog class=pokedex-details>
