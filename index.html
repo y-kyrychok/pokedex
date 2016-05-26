@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang=en>
+<title>Pokedex</title>
+<meta charset=utf-8>
+<link rel=stylesheet href=reset.css>
+<link rel=stylesheet href=index.css>
+
+<script src=dialog.js async></script>
+<script src=pokedex-main.js async></script>
+<script src=pokedex-load.js async></script>
+<script src=pokedex-card.js async></script>
+<script src=pokedex-filter.js async></script>
+
+<template data-for=type>
+    <li>
+        <label>
+            {name}
+            <input type=checkbox
+                kind={name}
+                is=pokedex-filter>
+        </label>
+</template>
+
+<template data-for=card>
+    <pokedex-card number={pkdx_id}>
+        <img src={api}/media/img/{pkdx_id}.png alt={name}>
+        <h1>{name} #{pkdx_id}</h1>
+        <ul class=types>@{types as type}</ul>
+    </pokedex-card>
+</template>
+
+<template data-for=details>
+    <h1>{name}</h1>
+    <table>
+        <tr><td>Attack<td>{attack}
+        <tr><td>Defense<td>{defense}
+        <tr><td>SP Attack<td>{sp_atk}
+        <tr><td>SP Defense<td>{sp_def}
+        <tr><td>HP<td>{hp}
+        <tr><td>Speed<td>{speed}
+        <tr><td>Weight<td>{weight}
+    </table>
+</template>
+
+<header>Pokedex</header>
+
+<pokedex-main container=section template=card>
+    <section></section>
+    <button is=pokedex-load clicked>
+        Load more
+    </button>
+</pokedex-main>
+
+<dialog class=pokedex-details>
+    <button class=close>x</button>
+</dialog>

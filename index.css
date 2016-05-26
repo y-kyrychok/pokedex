@@ -1,0 +1,195 @@
+body
+{
+	width: 1024px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+/*	margin: 0 auto;*/
+}
+
+header 
+{	
+	font-family: Arial;
+	font-size: 80px;
+	font-weight: 700;
+	color: white;
+	text-shadow: -4px 4px 3px #666, 1px -1px 2px #000;
+
+	margin: 35px 0;
+}
+
+@media (max-width: 480px)
+{
+	header
+	{
+		font-size: 16.66666vw;
+	}
+}
+
+main
+{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+article
+{
+	width: 155px;
+
+	margin: 10px 14px;
+	padding: 10px;
+
+	box-shadow: -4px 4px 3px #666, 1px -1px 2px #000;
+	border-radius: 5px;
+
+	cursor: pointer;
+}
+
+article img
+{
+	height: 120px;
+	display: block;
+	margin: 0 auto;
+}
+
+article h1
+{
+	font-family: Courier;
+	letter-spacing: 0.5px;
+
+	border-bottom: 1px solid red;
+}
+
+article ul
+{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+
+	margin: 10px 0 5px;
+}
+
+article ul li button
+{
+	width: 75px;
+
+	font-family: Arial;
+	font-size: 1.1em;
+	font-weight: 400;
+
+	margin: 0 0 3px 10px;
+	padding: 3px 0;
+	border-radius: 5px;
+}
+
+article ul li button:first-child
+{
+	margin: 0;
+}
+
+button.pokedex-load
+{
+	width: 270px;
+
+	font-size: 1.5em;
+	font-weight: 700;
+	color: white;
+	text-shadow: -4px 4px 3px #666, 1px -1px 2px #000;
+
+	margin: 10px 0;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+dialog.pokedex-details
+{
+	border: 1px solid black;
+	box-shadow: 4px 4px 15px #666;
+	background: white;
+}
+
+dialog.pokedex-details h1
+{
+	margin-bottom: 5px;
+	border-bottom: 1px solid red;
+}
+
+::backdrop
+{
+	will-change: transform;
+	background: black;
+	opacity: 0.5;
+}
+
+.pokedex-details .close
+{
+	float: right;
+	cursor: pointer;
+}
+
+[kind=bug]
+{
+	background: brown;
+}
+[kind=electric]
+{
+	background: yellow;
+}
+[kind=fairy]
+{
+	background: #D2B13A;
+}
+[kind=fighting]
+{
+	background: #EC2FDE;
+}
+[kind=flying]
+{
+	background: #C4A6FF;
+}
+[kind=fire]
+{
+	background: red;
+}
+[kind=ghost]
+{
+	background: #BBBBBB;
+}
+[kind=grass]
+{
+	background: #65F9A7;
+}
+[kind=ground]
+{
+	background: #966B34;
+}
+[kind=ice]
+{
+	background: #C5FFFC;
+}
+[kind=normal]
+{
+	background: white;
+}
+[kind=poison]
+{
+	background: #46C646;
+}
+[kind=psychic]
+{
+	background: #B4FFBD;
+}
+[kind=rock]
+{
+	background: #FFD0D0;
+}
+[kind=steel]
+{
+	background: #EAFFB9;
+}
+[kind=water]
+{
+	background: #B5D3FF;
+}
